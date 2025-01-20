@@ -19,11 +19,18 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-         \App\Models\User::factory()->create([
+         /*\App\Models\User::factory()->create([
              'name' => 'John',
              'last_name' => 'Doe',
              'password' => 'password',
-             'email' => 'test@example.com',
-         ]);
+             'email' => 'test@example.com',            
+         ]);*/
+         $this->call(UserssTableSeeder::class);
+         $this->call(OutletTableSeeder::class);
+         $this->call(TokenTableSeeder::class);
+         $this->call(GasRequestsTableSeeder::class);
+         $this->call(DeliveriesTableSeeder::class);
+         $this->call(NotificationsTableSeeder::class);
+         $this->call(BusinessesTableSeeder::class);
     }
 }
