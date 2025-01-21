@@ -1,52 +1,37 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('About') }}</h1>
-
+<div class="container mt-5">
     <div class="row justify-content-center">
-
-        <div class="col-lg-6">
-
-            <div class="card shadow mb-4">
-
-                <div class="card-profile-image mt-4">
-                    <img src="{{ asset('img/favicon.png') }}" class="rounded-circle" alt="user-image">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center">{{ __('About Us') }}</h3>
                 </div>
-
                 <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h5 class="font-weight-bold">Laravel SB Admin 2</h5>
-                            <p>SB Admin 2 for Laravel.</p>
-                            <p>Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.</p>
-                            <p>If you found this project useful, then please consider giving it a ⭐</p>
-                            <a href="https://github.com/aleckrh/laravel-sb-admin-2" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github fa-fw"></i> Go to repository
-                            </a>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h5 class="font-weight-bold">Credits</h5>
-                            <p>Laravel SB Admin 2 uses some open-source third-party libraries/packages, many thanks to the web community.</p>
-                            <ul>
-                                <li><a href="https://laravel.com" target="_blank">Laravel</a> - Open source framework.</li>
-                                <li><a href="https://github.com/DevMarketer/LaravelEasyNav" target="_blank">LaravelEasyNav</a> - Making managing navigation in Laravel easy.</li>
-                                <li><a href="https://startbootstrap.com/themes/sb-admin-2" target="_blank">SB Admin 2</a> - Thanks to Start Bootstrap.</li>
-                            </ul>
-                        </div>
-                    </div>
-
+                    <p>
+                        Welcome to <strong>GasByGas</strong>, Sri Lanka's trusted LP gas distribution service. Our mission is to make gas distribution seamless, reliable, and accessible for all. 
+                        We provide customers with an easy-to-use platform for online gas requests, real-time delivery tracking, and instant notifications.
+                    </p>
+                    <p>
+                        Established with the vision of revolutionizing the gas distribution industry, we ensure the highest standards of safety, efficiency, and customer satisfaction. Our extensive network of 
+                        outlets and advanced technology solutions guarantee a smooth experience, whether you're a residential customer or a business organization.
+                    </p>
+                    <p>
+                        <strong>Why Choose Us?</strong>
+                    </p>
+                    <ul>
+                        <li>Convenient online gas requesting system.</li>
+                        <li>Real-time delivery tracking and status updates.</li>
+                        <li>Reliable customer support and service excellence.</li>
+                        <li>Seamless experience for residential and industrial clients.</li>
+                    </ul>
+                    <p>
+                        Thank you for choosing GasByGas. Together, let's power your needs safely and efficiently!
+                    </p>
                 </div>
             </div>
-
         </div>
-
     </div>
-
+</div>
 @endsection

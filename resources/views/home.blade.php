@@ -80,7 +80,7 @@
                 </div>
                 <div class="card-body">
                     <p>Need help or have questions? Reach out to our support team.</p>
-                    <a href="{{ route('home') }}" class="btn btn-primary">Get in Touch</a>
+                    <a href="{{ route('contact') }}" class="btn btn-primary">Get in Touch</a>
                 </div>
             </div>
         </div>

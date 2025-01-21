@@ -29,7 +29,7 @@
 
                                     <!-- ID Field -->
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="id" placeholder="{{ __('ID') }}" value="{{ old('id') }}" required>
+                                        <input type="text" class="form-control form-control-user" name="id" placeholder="{{ __('NIC') }}" value="{{ old('id') }}" required>
                                     </div>
 
                                     <!-- Name Field -->
