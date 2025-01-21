@@ -25,28 +25,44 @@
                                 @endif
 
                                 <form method="POST" action="{{ route('register') }}" class="user">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    @csrf <!-- CSRF Token for security -->
 
+                                    <!-- ID Field -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" name="id" placeholder="{{ __('ID') }}" value="{{ old('id') }}" required>
+                                    </div>
+
+                                    <!-- Name Field -->
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" name="name" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
                                     </div>
 
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="last_name" placeholder="{{ __('Last Name') }}" value="{{ old('last_name') }}" required>
-                                    </div>
-
+                                    <!-- Email Field -->
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required>
                                     </div>
 
+                                    <!-- Phone Field -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" name="phone" placeholder="{{ __('Phone') }}" value="{{ old('phone') }}" required>
+                                    </div>
+
+                                    <!-- Address Field -->
+                                    <div class="form-group">
+                                        <textarea class="form-control form-control-user" name="address" placeholder="{{ __('Address') }}" required>{{ old('address') }}</textarea>
+                                    </div>
+
+                                    <!-- Password Field -->
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
                                     </div>
 
+                                    <!-- Confirm Password Field -->
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                                     </div>
 
+                                    <!-- Submit Button -->
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             {{ __('Register') }}
