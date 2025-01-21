@@ -32,19 +32,19 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-gas-pump"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">GasByGas</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
+        <!-- Nav Item - Home -->
         <li class="nav-item {{ Nav::isRoute('home') }}">
             <a class="nav-link" href="{{ route('home') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>{{ __('Dashboard') }}</span></a>
+                <i class="fas fa-fw fa-home"></i>
+                <span>{{ __('Home') }}</span></a>
         </li>
 
         <!-- Divider -->
@@ -52,22 +52,78 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Settings') }}
+            {{ __('Customer Pages') }}
         </div>
 
-        <!-- Nav Item - Profile -->
-        <li class="nav-item {{ Nav::isRoute('profile') }}">
-            <a class="nav-link" href="{{ route('profile') }}">
-                <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{ __('Dashboard') }}</span>
             </a>
         </li>
 
-        <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="{{ route('about') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span>
+        <!-- Nav Item - Gas Requests -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-gas-pump"></i>
+                <span>{{ __('Gas Requests') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Notifications -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-bell"></i>
+                <span>{{ __('Notifications') }}</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('Outlet Manager Pages') }}
+        </div>
+
+        <!-- Nav Item - Delivery Management -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-truck"></i>
+                <span>{{ __('Delivery Management') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Token Verification -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-check-circle"></i>
+                <span>{{ __('Token Verification') }}</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('Admin Pages') }}
+        </div>
+
+        <!-- Nav Item - User Management -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>{{ __('User Management') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Reports -->
+        <li class="nav-item {{ Nav::isRoute('home') }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-chart-line"></i>
+                <span>{{ __('Reports') }}</span>
             </a>
         </li>
 
