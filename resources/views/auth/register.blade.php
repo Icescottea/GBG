@@ -27,7 +27,7 @@
                                 <form method="POST" action="{{ route('register') }}" class="user">
                                     @csrf <!-- CSRF Token for security -->
 
-                                    <!-- ID Field -->
+                                    <!-- NIC Field -->
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" name="id" placeholder="{{ __('NIC') }}" value="{{ old('id') }}" required>
                                     </div>
