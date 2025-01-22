@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GasRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,12 @@ Auth::routes();
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+// Display gas request page
+Route::get('/gasrequest', [GasRequestController::class, 'index'])->name('gasrequest');
+
+// Handle gas request form submission
+Route::post('/gasrequest', [GasRequestController::class, 'store'])->name('gasrequest.store');
 
 Route::get('/home', function () {
     return view('home');

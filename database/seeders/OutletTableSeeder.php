@@ -13,8 +13,6 @@ class OutletTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('outlet')->truncate(); // Clear the table before seeding
-
         DB::table('outlet')->insert([
             [
                 'name' => 'Main Outlet',

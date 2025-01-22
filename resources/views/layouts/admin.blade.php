@@ -64,8 +64,8 @@
         </li>
 
         <!-- Nav Item - Gas Requests -->
-        <li class="nav-item {{ Nav::isRoute('home') }}">
-            <a class="nav-link" href="{{ route('home') }}">
+        <li class="nav-item {{ Nav::isRoute('gasrequest') }}">
+            <a class="nav-link" href="{{ route('gasrequest') }}">
                 <i class="fas fa-fw fa-gas-pump"></i>
                 <span>{{ __('Gas Requests') }}</span>
             </a>
