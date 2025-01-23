@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GasRequestController;
+use App\Http\Controllers\HeadOfficeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -54,9 +55,7 @@ Route::middleware(['auth'])->group(function () {
         return view('admindashboard');
     })->name('admindashboard')->middleware('role:admin');
 
-    Route::get('/headoffice', function () {
-        return view('headoffice');
-    })->name('headoffice')->middleware('role:head_office_staff');
+    Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
 
     Route::get('/outletmanager', function () {
         return view('outletmanager');
