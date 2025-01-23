@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GasRequestController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,52 +24,51 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Authentication Routes
 Auth::routes();
 
 // Guest Routes
 Route::middleware(['guest'])->group(function () {
-    // Login Page
-    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-
-    // Registration Page
-    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
-
-    // Password Reset Routes (optional)
-    Route::get('/password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-    Route::post('/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-    Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-    Route::post('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset']);
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
 });
 
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
-    // Dashboard/Home Page
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    // Profile Page
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    // Profile Routes
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    // Gas Request Page
-    Route::get('/gasrequest', [App\Http\Controllers\GasRequestController::class, 'index'])->name('gasrequest');
-    Route::post('/gasrequest', [App\Http\Controllers\GasRequestController::class, 'store'])->name('gasrequest.store');
+    // Gas Request Routes
+    Route::get('/gasrequest', [GasRequestController::class, 'index'])->name('gasrequest');
+    Route::post('/gasrequest', [GasRequestController::class, 'store'])->name('gasrequest.store');
 });
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
+// Role-Based Dashboard Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admindashboard', function () {
+        return view('admindashboard');
+    })->name('admindashboard')->middleware('role:admin');
 
-// Display gas request page
-Route::get('/gasrequest', [GasRequestController::class, 'index'])->name('gasrequest');
+    Route::get('/headoffice', function () {
+        return view('headoffice');
+    })->name('headoffice')->middleware('role:head_office_staff');
 
-// Handle gas request form submission
-Route::post('/gasrequest', [GasRequestController::class, 'store'])->name('gasrequest.store');
+    Route::get('/outletmanager', function () {
+        return view('outletmanager');
+    })->name('outletmanager')->middleware('role:outlet_manager');
+});
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+// Admin Role Assignment
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::post('/admin/assign-role', [AdminController::class, 'assignRole'])->name('admin.assignRole');
+});
 
+// Static Pages
 Route::get('/about', function () {
     return view('about');
 })->name('about');

@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'address' => $data['address'],
             'password' => Hash::make($data['password']),
+            'role' => 'customer', // Assign default role
         ]);
     }
 

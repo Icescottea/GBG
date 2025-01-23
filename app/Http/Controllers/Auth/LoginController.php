@@ -10,17 +10,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
@@ -40,20 +29,39 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            // Login successful
-            return redirect()->intended('home');
-        }
-        // Login failed
-        return redirect()->back()->withErrors(['email' => 'These credentials do not match our records.']);
-    }
-
+    /**
+     * Override the redirectTo method to redirect based on user roles.
+     */
     protected function redirectTo()
     {
-        session()->flash('success', 'You are logged in!');
-        return $this->redirectTo;
+        $user = Auth::user();
+
+        // Redirect based on the role
+        switch ($user->role) {
+            case 'admin':
+                return '/admindashboard';
+            case 'outlet_manager':
+                return '/outletmanager';
+            case 'head_office_staff':
+                return '/headoffice';
+            default:
+                return '/home'; // Default for customers
+        }
+    }
+
+    /**
+     * Handle the login attempt.
+     */
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Login successful
+            return redirect()->intended($this->redirectTo());
+        }
+
+        // Login failed
+        return redirect()->back()->withErrors(['email' => 'These credentials do not match our records.']);
     }
 }
