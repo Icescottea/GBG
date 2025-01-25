@@ -11,7 +11,7 @@ class HeadOfficeController extends Controller
     public function index()
     {
         // Retrieve outlet statuses and map 0/1 to 'Active'/'Inactive'
-        $outletStatuses = Outlet::select('id', 'name', 'status')
+        $outletStatuses = Outlet::select('id', 'name', 'status', 'stock_5kg', 'stock_12kg')
             ->get()
             ->map(function ($outlet) {
                 $outlet->status = $outlet->status == 0 ? 'Active' : 'Inactive';
