@@ -13,11 +13,6 @@ class Outlet extends Model
     protected $table = 'outlet';
 
     // Fillable attributes for mass assignment
-    protected $fillable = ['name', 'location', 'phone', 'status', 'manager_name'];
+    protected $fillable = ['name', 'location', 'phone', 'status', 'manager_email'];
 
-    // Optionally, add relationships if necessary
-    public function gasRequests()
-    {
-        return $this->hasMany(GasRequest::class, 'outlet_id');
-    }
 }

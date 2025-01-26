@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('gas_requests', function (Blueprint $table) {
-            $table->string('type')->after('quantity'); // Cylinder type (e.g., 2.5kg, 10kg)
+        Schema::table('userss', function (Blueprint $table) {
+            $table->foreignId('outlet_id')->nullable()->constrained('outlet')->onDelete('set null');
         });
     }
 
@@ -21,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('gas_requests', function (Blueprint $table) {
-            //
+        Schema::table('userss', function (Blueprint $table) {
+            $table->dropForeign(['outlet_id']);
+            $table->dropColumn('outlet_id');
         });
     }
 };

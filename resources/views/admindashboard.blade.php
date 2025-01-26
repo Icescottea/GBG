@@ -45,7 +45,18 @@
                         <option value="customer">Customer</option>
                         <option value="outlet_manager">Outlet Manager</option>
                         <option value="head_office_staff">Head Office Staff</option>
-                        <option value="head_office_staff">Admin</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <!-- Outlet Selector -->
+                <div class="form-group" id="outlet-section" style="display: none;">
+                    <label for="outlet_id">Assign Outlet</label>
+                    <select id="outlet_id" name="outlet_id" class="form-control">
+                        <option value="">-- Select Outlet --</option>
+                            @foreach ($outlets as $outlet)
+                                <option value="{{ $outlet->id }}">{{ $outlet->name }}</option>
+                            @endforeach
                     </select>
                 </div>
 
@@ -54,4 +65,13 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('role').addEventListener('change', function () {
+            const outletSection = document.getElementById('outlet-section');
+            outletSection.style.display = this.value === 'outlet_manager' ? 'block' : 'none';
+        });
+    </script>
+    
+
 @endsection

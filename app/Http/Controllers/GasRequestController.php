@@ -20,8 +20,7 @@ class GasRequestController extends Controller
     public function index()
     {
         // Fetch all outlets
-        $outlets = Outlet::where('status', 'active')->get(); // Only active outlets
-
+        $outlets = Outlet::all(); // Fetch all outlets
         return view('gasrequest', compact('outlets'));
     }
 

@@ -47,16 +47,16 @@ Route::middleware(['auth'])->group(function () {
     // Gas Request Routes
     Route::get('/gasrequest', [GasRequestController::class, 'index'])->name('gasrequest');
     Route::post('/gasrequest', [GasRequestController::class, 'store'])->name('gasrequest.store');
+
+    // Head Office Routes
+    Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
+    Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('headoffice.storeDelivery');
+    Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('dispatch.addDelivery');
 });
 
 // Role-Based Dashboard Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admindashboard', function () {
-        return view('admindashboard');
-    })->name('admindashboard')->middleware('role:admin');
-
-    Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
-
+    Route::get('/admindashboard', [AdminController::class, 'index'])->name('admindashboard')->middleware('role:admin');
     Route::get('/outletmanager', function () {
         return view('outletmanager');
     })->name('outletmanager')->middleware('role:outlet_manager');

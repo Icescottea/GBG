@@ -21,6 +21,30 @@ class HeadOfficeController extends Controller
         // Retrieve count of pending deliveries
         $pendingDeliveries = Delivery::where('status', 'pending')->count();
 
-        return view('headoffice', compact('outletStatuses', 'pendingDeliveries'));
+        // Retrieve all deliveries for the dispatch office view
+        $deliveries = Delivery::with('outlet:id,name')->orderBy('scheduled_date', 'asc')->get();
+
+        // Retrieve outlets for the dropdown in the delivery form
+        $outlets = Outlet::select('id', 'name')->get();
+
+        return view('headoffice', compact('outletStatuses', 'pendingDeliveries', 'deliveries', 'outlets'));
+    }
+
+    public function storeDelivery(Request $request)
+    {
+        // Validate incoming request data
+        $request->validate([
+            'outlet_id' => 'required|exists:outlets,id',
+            'scheduled_date' => 'required|date|after_or_equal:today',
+        ]);
+
+        // Create a new delivery record
+        Delivery::create([
+            'outlet_id' => $request->outlet_id,
+            'scheduled_date' => $request->scheduled_date,
+            'status' => 'pending',
+        ]);
+
+        return redirect()->route('headoffice')->with('success', 'Delivery scheduled successfully!');
     }
 }
