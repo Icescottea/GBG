@@ -42,6 +42,7 @@
 
     <!-- Dispatch Office Section -->
     <div id="dispatchOfficeSection" style="display: none;">
+        <h4 class="mt-4">Dispatch Office</h4>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Add Delivery</h6>
@@ -84,6 +85,18 @@
                     <div class="form-group">
                         <label for="scheduled_date">Scheduled Date</label>
                         <input type="date" id="scheduled_date" name="scheduled_date" class="form-control" required>
+                    </div>
+
+                    <!-- Quantity of 5kg Stock -->
+                    <div class="form-group">
+                        <label for="qty_5kg_stock">Quantity of 5kg Stock</label>
+                        <input type="number" id="qty_5kg_stock" name="qty_5kg_stock" class="form-control" min="0" required>
+                    </div>
+                
+                    <!-- Quantity of 12kg Stock -->
+                    <div class="form-group">
+                        <label for="qty_12kg_stock">Quantity of 12kg Stock</label>
+                        <input type="number" id="qty_12kg_stock" name="qty_12kg_stock" class="form-control" min="0" required>
                     </div>
 
                     <!-- Submit Button -->

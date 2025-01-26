@@ -1,97 +1,61 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Outlet Manager Dashboard') }}</h1>
+<h1 class="h3 mb-4 text-gray-800">Outlet Manager Dashboard</h1>
 
-    <!-- Gas Requests Section -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Incoming Gas Requests</h6>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Customer Name</th>
-                        <th>Quantity</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Sample Data -->
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>2</td>
-                        <td>5kg</td>
-                        <td>Pending</td>
-                        <td>
-                            <button class="btn btn-success btn-sm approve-btn">Approve</button>
-                            <button class="btn btn-danger btn-sm reject-btn">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>1</td>
-                        <td>12kg</td>
-                        <td>Pending</td>
-                        <td>
-                            <button class="btn btn-success btn-sm approve-btn">Approve</button>
-                            <button class="btn btn-danger btn-sm reject-btn">Reject</button>
-                        </td>
-                    </tr>
-                    <!-- Dynamic rows can be added here -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Stock Levels Section -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Stock Levels</h6>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <!-- 5kg Stock -->
-                <div class="col-md-6">
-                    <div class="card bg-primary text-white shadow">
-                        <div class="card-body">
-                            5kg Cylinders
-                            <div class="text-white-50 small">Available: 50</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 12kg Stock -->
-                <div class="col-md-6">
-                    <div class="card bg-success text-white shadow">
-                        <div class="card-body">
-                            12kg Cylinders
-                            <div class="text-white-50 small">Available: 30</div>
-                        </div>
-                    </div>
-                </div>
+<!-- Pending Requests -->
+<div class="card mb-4">
+    <div class="card-header">Pending Requests</div>
+    <div class="card-body">
+        @forelse ($gasRequests as $request)
+            <div class="border p-3 mb-3">
+                <p><strong>Customer:</strong> {{ $request->user->name }}</p>
+                <p><strong>Type:</strong> {{ $request->type }}</p>
+                <p><strong>Quantity:</strong> {{ $request->quantity }}</p>
+                <button class="btn btn-success btn-sm" onclick="approveRequest({{ $request->id }})">Approve</button>
+                <button class="btn btn-danger btn-sm" onclick="denyRequest({{ $request->id }})">Deny</button>
             </div>
-        </div>
+        @empty
+            <p>No pending requests.</p>
+        @endforelse
     </div>
+</div>
 
-    <!-- JavaScript for Approve/Reject Actions -->
-    <script>
-        document.querySelectorAll('.approve-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                alert('Request Approved!');
-            });
-        });
+<!-- Stock Levels -->
+<div class="card mb-4">
+    <div class="card-header">Stock Levels</div>
+    <div class="card-body">
+        <p><strong>5kg:</strong> {{ $stock->stock_5kg ?? 0 }} cylinders</p>
+        <p><strong>12kg:</strong> {{ $stock->stock_12kg ?? 0 }} cylinders</p>
+    </div>
+</div>
 
-        document.querySelectorAll('.reject-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                alert('Request Rejected!');
-            });
-        });
-    </script>
+<!-- Upcoming Deliveries -->
+<div class="card mb-4">
+    <div class="card-header">Upcoming Deliveries</div>
+    <div class="card-body">
+        @forelse ($upcomingDeliveries as $delivery)
+            <div class="mb-2">
+                <p><strong>Date:</strong> {{ $delivery->scheduled_date }}</p>
+                <p><strong>Status:</strong> {{ ucfirst($delivery->status) }}</p>
+            </div>
+        @empty
+            <p>No upcoming deliveries.</p>
+        @endforelse
+    </div>
+</div>
 @endsection
+
+<script>
+    function approveRequest(id) {
+        if (confirm('Are you sure you want to approve this request?')) {
+            window.location.href = `/outletmanager/approve/${id}`;
+        }
+    }
+
+    function denyRequest(id) {
+        if (confirm('Are you sure you want to deny this request?')) {
+            window.location.href = `/outletmanager/deny/${id}`;
+        }
+    }
+</script>

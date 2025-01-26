@@ -32,19 +32,22 @@ class HeadOfficeController extends Controller
 
     public function storeDelivery(Request $request)
     {
-        // Validate incoming request data
         $request->validate([
             'outlet_id' => 'required|exists:outlets,id',
             'scheduled_date' => 'required|date|after_or_equal:today',
+            'qty_5kg_stock' => 'required|integer|min:0',
+            'qty_12kg_stock' => 'required|integer|min:0',
         ]);
-
-        // Create a new delivery record
+    
         Delivery::create([
             'outlet_id' => $request->outlet_id,
             'scheduled_date' => $request->scheduled_date,
+            'qty_5kg_stock' => $request->qty_5kg_stock,
+            'qty_12kg_stock' => $request->qty_12kg_stock,
             'status' => 'pending',
         ]);
-
+    
         return redirect()->route('headoffice')->with('success', 'Delivery scheduled successfully!');
     }
+
 }

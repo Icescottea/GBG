@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OutletManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,15 +52,16 @@ Route::middleware(['auth'])->group(function () {
     // Head Office Routes
     Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
     Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('headoffice.storeDelivery');
-    Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('dispatch.addDelivery');
 });
 
 // Role-Based Dashboard Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/admindashboard', [AdminController::class, 'index'])->name('admindashboard')->middleware('role:admin');
-    Route::get('/outletmanager', function () {
-        return view('outletmanager');
-    })->name('outletmanager')->middleware('role:outlet_manager');
+
+    // Outlet Manager Dashboard
+    Route::get('/outletmanager', [OutletManagerController::class, 'index'])->name('outletmanager')->middleware('role:outlet_manager');
+    Route::get('/outletmanager/approve/{id}', [OutletManagerController::class, 'approveRequest'])->name('outletmanager.approve');
+    Route::get('/outletmanager/deny/{id}', [OutletManagerController::class, 'denyRequest'])->name('outletmanager.deny');    
 });
 
 // Admin Role Assignment
