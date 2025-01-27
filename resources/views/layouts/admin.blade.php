@@ -72,10 +72,10 @@
         </li>
 
         <!-- Nav Item - Notifications -->
-        <li class="nav-item {{ Nav::isRoute('home') }}">
-            <a class="nav-link" href="{{ route('home') }}">
+        <li class="nav-item {{ Nav::isRoute('tokens.index') }}">
+            <a class="nav-link" href="{{ route('tokens.index') }}">
                 <i class="fas fa-fw fa-bell"></i>
-                <span>{{ __('Notifications') }}</span>
+                <span>{{ __('Tokens') }}</span>
             </a>
         </li>
 

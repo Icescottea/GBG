@@ -33,7 +33,7 @@ class HeadOfficeController extends Controller
     public function storeDelivery(Request $request)
     {
         $request->validate([
-            'outlet_id' => 'required|exists:outlets,id',
+            'outlet_id' => 'required|exists:outlet,id',
             'scheduled_date' => 'required|date|after_or_equal:today',
             'qty_5kg_stock' => 'required|integer|min:0',
             'qty_12kg_stock' => 'required|integer|min:0',

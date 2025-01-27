@@ -3,15 +3,17 @@
 @section('main-content')
     <h1 class="h3 mb-4 text-gray-800">{{ __('Gas Request') }}</h1>
 
-    @if (session('success'))
-        <div class="alert alert-success border-left-success" role="alert">
-            {{ session('success') }}
+    <!-- Error Display -->
+    @if ($errors->has('error'))
+        <div class="alert alert-danger">
+            {{ $errors->first('error') }}
         </div>
     @endif
 
-    @if (session('error'))
-        <div class="alert alert-danger border-left-danger" role="alert">
-            {{ session('error') }}
+    <!-- Success Message -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
     @endif
 

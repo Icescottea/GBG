@@ -35,6 +35,19 @@ class GasRequestController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
+        // Check if the user has any token (regardless of status) or pending request
+        $hasOngoingTransaction = GasRequest::where('user_id', Auth::id())
+        ->where('status', 'pending') // Pending request
+        ->exists() || 
+        \App\Models\Token::where('user_id', Auth::id())
+        ->exists(); // Any token exists
+
+        if ($hasOngoingTransaction) {
+            return redirect()->back()->withErrors([
+                'error' => 'You already have an ongoing transaction (a pending request or issued token). Please complete it before making a new request.',
+            ]);
+        }
+
         // Save the request to the database
         GasRequest::create([
             'user_id' => Auth::id(),

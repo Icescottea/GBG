@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OutletManagerController;
+use App\Http\Controllers\TokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Head Office Routes
     Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
-    Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('headoffice.storeDelivery');
+    Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('dispatch.addDelivery');
+
+
+    // Tokens Routes
+    Route::get('/tokens', [TokenController::class, 'index'])->name('tokens.index');
+    Route::get('/tokens/{id}', [TokenController::class, 'details'])->name('tokens.details');
 });
 
 // Role-Based Dashboard Routes
