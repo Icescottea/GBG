@@ -17,6 +17,7 @@ class GasRequest extends Model
         'type',
         'quantity',
         'token_id',
+        'issued_from'.
         'status',
         'requested_date',
         'scheduled_date',

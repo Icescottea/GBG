@@ -67,7 +67,9 @@ Route::middleware(['auth'])->group(function () {
     // Outlet Manager Dashboard
     Route::get('/outletmanager', [OutletManagerController::class, 'index'])->name('outletmanager')->middleware('role:outlet_manager');
     Route::get('/outletmanager/approve/{id}', [OutletManagerController::class, 'approveRequest'])->name('outletmanager.approve');
-    Route::get('/outletmanager/deny/{id}', [OutletManagerController::class, 'denyRequest'])->name('outletmanager.deny');    
+    Route::get('/outletmanager/deny/{id}', [OutletManagerController::class, 'denyRequest'])->name('outletmanager.deny'); 
+    Route::post('/outletmanager/receive-delivery/{id}', [OutletManagerController::class, 'receiveDelivery'])->name('outletmanager.receiveDelivery');   
+    Route::post('/outletmanager/extend-token/{id}', [OutletManagerController::class, 'extendToken'])->name('outletmanager.extendToken');
 });
 
 // Admin Role Assignment

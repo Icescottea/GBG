@@ -26,6 +26,8 @@ class Delivery extends Model
         'scheduled_date',
         'delivered_date',
         'status',
+        'qty_5kg_stock',
+        'qty_12kg_stock',
     ];
 
     /**

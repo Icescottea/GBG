@@ -38,15 +38,21 @@ class HeadOfficeController extends Controller
             'qty_5kg_stock' => 'required|integer|min:0',
             'qty_12kg_stock' => 'required|integer|min:0',
         ]);
-    
-        Delivery::create([
+
+        $delivery = Delivery::create([
             'outlet_id' => $request->outlet_id,
             'scheduled_date' => $request->scheduled_date,
             'qty_5kg_stock' => $request->qty_5kg_stock,
             'qty_12kg_stock' => $request->qty_12kg_stock,
             'status' => 'pending',
         ]);
-    
+
+        // Update outlet pending stock
+        $outlet = Outlet::find($request->outlet_id);
+        $outlet->pending_stock_5kg += $request->qty_5kg_stock;
+        $outlet->pending_stock_12kg += $request->qty_12kg_stock;
+        $outlet->save();
+
         return redirect()->route('headoffice')->with('success', 'Delivery scheduled successfully!');
     }
 
