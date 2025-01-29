@@ -9,7 +9,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The table associated with the model.
@@ -48,5 +49,10 @@ class User extends Authenticatable
     protected $attributes = [
         'role' => 'customer', // Default role
     ];
+
+    public function tokens()
+    {
+        return $this->hasMany(Token::class, 'user_id', 'id');
+    }
 
 }
