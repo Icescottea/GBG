@@ -29,19 +29,28 @@ class GasRequestController extends Controller
      */
     public function store(Request $request)
     {
-
-        $user = Auth::user();
-
-        // Check if the user is a business and not verified
-        if ($user->role === 'business' && !$user->is_verified) {
-            return redirect()->back()->with('error', 'Your business is not verified yet. Please wait for admin approval.');
-        }
-        
+                
         $request->validate([
             'outlet_id' => 'required|exists:outlet,id',
             'type' => 'required|in:5kg,12kg',
             'quantity' => 'required|integer|min:1',
         ]);
+
+        $user = Auth::user();
+        $outlet = Outlet::find($request->outlet_id);
+
+        if (!$outlet) {
+            return redirect()->back()->withErrors(['error' => 'Invalid outlet selected.']);
+        }
+    
+        // **Strictly prevent requests when stock & pending stock are zero**
+        if (
+            ($request->type === '5kg' && $outlet->stock_5kg == 0 && $outlet->pending_stock_5kg == 0) ||
+            ($request->type === '12kg' && $outlet->stock_12kg == 0 && $outlet->pending_stock_12kg == 0)
+        ) {
+            return redirect()->back()->withErrors(['error' => 'No stock available for the selected type. Please try again later.']);
+        }
+
 
         // Check if the user has any token (regardless of status) or pending request
         $hasOngoingTransaction = GasRequest::where('user_id', Auth::id())

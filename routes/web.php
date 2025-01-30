@@ -28,9 +28,13 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [RegisterController::class, 'register']);
 });
 
+Route::get('/home', function () {
+    return view('home'); // Everyone, including logged-in users, stays on home
+})->name('home');
+
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -58,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/outletmanager/approve/{id}', [OutletManagerController::class, 'approveRequest'])->name('outletmanager.approve');
     Route::get('/outletmanager/deny/{id}', [OutletManagerController::class, 'denyRequest'])->name('outletmanager.deny'); 
     Route::post('/outletmanager/receive-delivery/{id}', [OutletManagerController::class, 'receiveDelivery'])->name('outletmanager.receiveDelivery');   
-    Route::post('/outletmanager/extend-token/{id}', [OutletManagerController::class, 'extendToken'])->name('outletmanager.extendToken');
+    Route::post('/outletmanager/extend-token/{id}', [OutletManagerController::class, 'extendToken'])->name('outletmanager.extendToken')->middleware('auth');
 });
 
 // Admin Role Assignment & Business Verification

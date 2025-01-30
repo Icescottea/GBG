@@ -27,16 +27,27 @@
                             <td>{{ $request->type }}</td>
                             <td>{{ $request->quantity }}</td>
                             <td>
-                                @if (($request->type === '5kg' && $stock['stock_5kg'] >= $request->quantity) || 
-                                     ($request->type === '12kg' && $stock['stock_12kg'] >= $request->quantity))
+                                @php
+                                    $availableStock = 0;
+                                    $pendingStock = 0;
+
+                                    if ($request->type === '5kg') {
+                                        $availableStock = $stock['stock_5kg'];
+                                        $pendingStock = $stock['pending_stock_5kg'];
+                                    } elseif ($request->type === '12kg') {
+                                        $availableStock = $stock['stock_12kg'];
+                                        $pendingStock = $stock['pending_stock_12kg'];
+                                    }
+                                @endphp
+
+                                @if (($availableStock + $pendingStock) >= $request->quantity)
                                     <span class="text-success">Ready to Approve</span>
                                 @else
                                     <span class="text-danger">Insufficient Stock</span>
                                 @endif
                             </td>
                             <td>
-                                @if (($request->type === '5kg' && $stock['stock_5kg'] >= $request->quantity) || 
-                                     ($request->type === '12kg' && $stock['stock_12kg'] >= $request->quantity))
+                                @if (($availableStock + $pendingStock) >= $request->quantity)
                                     <button class="btn btn-success btn-sm" onclick="approveRequest({{ $request->id }})">Approve</button>
                                 @else
                                     <button class="btn btn-secondary btn-sm" disabled>Approve</button>
@@ -80,6 +91,7 @@
                                 @if ($token->issued_from === 'pending_stock')
                                     <form method="POST" action="{{ route('outletmanager.extendToken', $token->id) }}" style="display: inline;">
                                         @csrf
+                                        <input type="hidden" name="_method" value="POST"> <!-- Ensure it's a POST request -->
                                         <button type="submit" class="btn btn-primary btn-sm">Extend</button>
                                     </form>
                                 @else

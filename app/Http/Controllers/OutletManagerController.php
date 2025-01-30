@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GasRequest;
 use App\Models\Outlet;
 use App\Models\Delivery;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OutletManagerController extends Controller
@@ -133,10 +134,10 @@ class OutletManagerController extends Controller
         return redirect()->back()->with('success', 'Delivery received and stock updated successfully.');
     }
 
-    public function extendToken($id)
+    public function extendToken(Request $request, $id)
     {
         // Find the token by ID
-        $token = \DB::table('tokens')->find($id);
+        $token = \DB::table('tokens')->where('id', $id)->first();
 
         // Ensure the token exists
         if (!$token) {

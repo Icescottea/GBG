@@ -7,7 +7,11 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block bg-light">
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <img src="{{ asset('img/logo.jpeg') }}" class="img-fluid" style="max-height: 100%;" alt="Register Image">
+                            </div>
+                        </div> 
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">

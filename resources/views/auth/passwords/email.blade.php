@@ -1,18 +1,18 @@
 @extends('layouts.auth')
 
 @section('main-content')
-<div class="container">
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">{{ __('Reset Password') }}</h1>
-                                </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <img src="{{ asset('img/logo.jpeg') }}" class="img-fluid" alt="Login Image">
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                            <div class="p-5 text-center">
+                                <h1 class="h4 text-gray-900 mb-4">{{ __('Find Your Admin and Ask For Help') }}</h1>
 
                                 @if ($errors->any())
                                     <div class="alert alert-danger border-left-danger" role="alert">
@@ -30,19 +30,12 @@
                                     </div>
                                 @endif
 
-                                <form method="POST" action="{{ route('password.email') }}" class="user">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            {{ __('Send Password Reset Link') }}
-                                        </button>
-                                    </div>
-                                </form>
+                                <div class="text-center">
+                                    <a class="small" href="{{ route('login') }}">
+                                        {{ __('Back to Login') }}
+                                    </a>
+                                </div>
+                         
                             </div>
                         </div>
                     </div>

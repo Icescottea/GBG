@@ -22526,3 +22526,346 @@ Stack trace:
 [2025-01-30 06:23:19] local.INFO: Received registration data:  {"_token":"bom0kNkQZFXL4hrCQdpUhZJMmxLOBcr5kAjNZyzf","id":"200000000009","name":"Business 9","email":"business9@gmail.com","phone":"0798412349","address":"business 9","password":"99999999","password_confirmation":"99999999","role":"business","certificate":{"Illuminate\\Http\\UploadedFile":"C:\\Users\\User\\AppData\\Local\\Temp\\php95B7.tmp"}} 
 [2025-01-30 06:23:19] local.INFO: Certificate uploaded: certificates/pnwbc4tAtbBgvVzTGFNnq2eW5W7HH5gMqDZHPTTg.png  
 [2025-01-30 06:23:20] local.INFO: User created successfully: {"role":"business","id":200000000009,"name":"Business 9","email":"business9@gmail.com","phone":"0798412349","address":"business 9","certificate_path":"certificates\/pnwbc4tAtbBgvVzTGFNnq2eW5W7HH5gMqDZHPTTg.png","updated_at":"2025-01-30T06:23:20.000000Z","created_at":"2025-01-30T06:23:20.000000Z"}  
+[2025-01-30 11:19:08] local.ERROR: Route [home.authenticated] not defined. {"view":{"view":"C:\\larvavel\\gbg\\resources\\views\\layouts\\admin.blade.php","data":[]},"userId":200123456780,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Route [home.authenticated] not defined. at C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:516)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(853): Illuminate\\Routing\\UrlGenerator->route()
+#1 C:\\larvavel\\gbg\\resources\\views\\layouts\\admin.blade.php(45): route()
+#2 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(123): require('...')
+#3 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): Illuminate\\Filesystem\\Filesystem::{closure:Illuminate\\Filesystem\\Filesystem::getRequire():120}()
+#4 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#5 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(74): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#6 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(208): Illuminate\\View\\Engines\\CompilerEngine->get()
+#7 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(191): Illuminate\\View\\View->getContents()
+#8 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(160): Illuminate\\View\\View->renderContents()
+#9 C:\\larvavel\\gbg\\resources\\views\\outletmanager.blade.php(150): Illuminate\\View\\View->render()
+#10 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(123): require('...')
+#11 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): Illuminate\\Filesystem\\Filesystem::{closure:Illuminate\\Filesystem\\Filesystem::getRequire():120}()
+#12 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#13 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(74): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#14 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(208): Illuminate\\View\\Engines\\CompilerEngine->get()
+#15 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(191): Illuminate\\View\\View->getContents()
+#16 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(160): Illuminate\\View\\View->renderContents()
+#17 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(70): Illuminate\\View\\View->render()
+#18 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent()
+#19 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(920): Illuminate\\Http\\Response->__construct()
+#20 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(887): Illuminate\\Routing\\Router::toResponse()
+#21 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Routing\\Router->prepareResponse()
+#22 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->{closure:Illuminate\\Routing\\Router::runRouteWithinStack():807}()
+#23 C:\\larvavel\\gbg\\app\\Http\\Middleware\\RoleMiddleware.php(35): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#24 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): App\\Http\\Middleware\\RoleMiddleware->handle()
+#25 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#26 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#27 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(64): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#28 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#29 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#30 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#31 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#32 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#33 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#34 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#35 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#36 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#37 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#38 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#39 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#40 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#41 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#42 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#43 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#44 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#45 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#46 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->{closure:Illuminate\\Foundation\\Http\\Kernel::dispatchToRouter():198}()
+#47 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#48 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#49 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#50 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#51 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#52 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#53 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#54 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#55 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#56 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#57 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#58 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#59 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#60 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#61 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#62 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#63 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#64 C:\\larvavel\\gbg\\public\\index.php(54): Illuminate\\Foundation\\Http\\Kernel->handle()
+#65 C:\\larvavel\\gbg\\server.php(21): require_once('...')
+#66 {main}
+
+[previous exception] [object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [home.authenticated] not defined. at C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:516)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(853): Illuminate\\Routing\\UrlGenerator->route()
+#1 C:\\larvavel\\gbg\\storage\\framework\\views\\8a32a395b0591a0baf0612f1c76e3174.php(45): route()
+#2 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(123): require('...')
+#3 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): Illuminate\\Filesystem\\Filesystem::{closure:Illuminate\\Filesystem\\Filesystem::getRequire():120}()
+#4 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#5 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(74): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#6 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(208): Illuminate\\View\\Engines\\CompilerEngine->get()
+#7 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(191): Illuminate\\View\\View->getContents()
+#8 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(160): Illuminate\\View\\View->renderContents()
+#9 C:\\larvavel\\gbg\\storage\\framework\\views\\17ff5fd28588bd7dfb0a4bedfba4bde9.php(160): Illuminate\\View\\View->render()
+#10 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(123): require('...')
+#11 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): Illuminate\\Filesystem\\Filesystem::{closure:Illuminate\\Filesystem\\Filesystem::getRequire():120}()
+#12 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire()
+#13 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(74): Illuminate\\View\\Engines\\PhpEngine->evaluatePath()
+#14 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(208): Illuminate\\View\\Engines\\CompilerEngine->get()
+#15 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(191): Illuminate\\View\\View->getContents()
+#16 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(160): Illuminate\\View\\View->renderContents()
+#17 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(70): Illuminate\\View\\View->render()
+#18 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent()
+#19 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(920): Illuminate\\Http\\Response->__construct()
+#20 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(887): Illuminate\\Routing\\Router::toResponse()
+#21 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Routing\\Router->prepareResponse()
+#22 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->{closure:Illuminate\\Routing\\Router::runRouteWithinStack():807}()
+#23 C:\\larvavel\\gbg\\app\\Http\\Middleware\\RoleMiddleware.php(35): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#24 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): App\\Http\\Middleware\\RoleMiddleware->handle()
+#25 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#26 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#27 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(64): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#28 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#29 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#30 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#31 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#32 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#33 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#34 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#35 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#36 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#37 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#38 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#39 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#40 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#41 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#42 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#43 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#44 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#45 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#46 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->{closure:Illuminate\\Foundation\\Http\\Kernel::dispatchToRouter():198}()
+#47 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#48 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#49 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#50 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#51 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#52 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#53 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#54 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#55 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#56 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#57 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#58 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#59 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#60 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#61 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#62 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#63 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#64 C:\\larvavel\\gbg\\public\\index.php(54): Illuminate\\Foundation\\Http\\Kernel->handle()
+#65 C:\\larvavel\\gbg\\server.php(21): require_once('...')
+#66 {main}
+"} 
+[2025-01-30 17:30:38] local.INFO: Received registration data:  {"_token":"1Aww1X3jeAhRkAvOb4CjCoKWRpZGxwjkYpDOQSS1","id":"12345678900","name":"Business 10","email":"b9@gmail.com","phone":"01234567891","address":"business 10","password":"11111111","password_confirmation":"11111111","role":"business","certificate":{"Illuminate\\Http\\UploadedFile":"C:\\Users\\User\\AppData\\Local\\Temp\\php7176.tmp"}} 
+[2025-01-30 17:30:40] local.INFO: Certificate uploaded: certificates/DST2aLcO7xJdQUYH44NsGW2aZRNOte3HUg1jmLnM.jpg  
+[2025-01-30 17:30:41] local.INFO: User created successfully: {"role":"business","id":12345678900,"name":"Business 10","email":"b9@gmail.com","phone":"01234567891","address":"business 10","certificate_path":"certificates\/DST2aLcO7xJdQUYH44NsGW2aZRNOte3HUg1jmLnM.jpg","updated_at":"2025-01-30T17:30:40.000000Z","created_at":"2025-01-30T17:30:40.000000Z"}  
+[2025-01-30 17:55:56] local.ERROR: Attempt to read property "stock_12kg" on null {"userId":200484911547,"exception":"[object] (ErrorException(code: 0): Attempt to read property \"stock_12kg\" on null at C:\\larvavel\\gbg\\app\\Http\\Controllers\\GasRequestController.php:65)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\larvavel\\gbg\\app\\Http\\Controllers\\GasRequestController.php(65): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->{closure:Illuminate\\Foundation\\Bootstrap\\HandleExceptions::forwardsTo():255}()
+#2 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\GasRequestController->store()
+#3 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(264): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(210): Illuminate\\Routing\\Route->runController()
+#6 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#7 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->{closure:Illuminate\\Routing\\Router::runRouteWithinStack():807}()
+#8 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#9 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#10 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(64): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#11 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#12 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#13 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#14 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#15 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#16 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#17 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#18 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#19 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#20 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#21 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#22 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#23 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#24 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#25 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#26 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#27 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#28 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#29 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->{closure:Illuminate\\Foundation\\Http\\Kernel::dispatchToRouter():198}()
+#30 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#31 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#32 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#33 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#34 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#35 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#36 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#37 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#38 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#39 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#40 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#41 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#42 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#43 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#44 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#45 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#46 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#47 C:\\larvavel\\gbg\\public\\index.php(54): Illuminate\\Foundation\\Http\\Kernel->handle()
+#48 C:\\larvavel\\gbg\\server.php(21): require_once('...')
+#49 {main}
+"} 
+[2025-01-30 18:30:26] local.ERROR: Command "make:" is ambiguous.
+Did you mean one of these?
+    make:cache-table         Create a migration for the cache...
+    make:cast                Create a new custom Eloquent cas...
+    make:channel             Create a new channel class
+    make:class               Create a new class
+    make:component           Create a new view component class
+    make:command             Create a new Artisan command
+    make:controller          Create a new controller class
+    make:enum                Create a new enum
+    make:event               Create a new event class
+    make:exception           Create a new custom exception class
+    make:factory             Create a new model factory
+    make:interface           Create a new interface
+    make:job                 Create a new job class
+    make:job-middleware      Create a new job middleware class
+    make:listener            Create a new event listener class
+    make:mail                Create a new email class
+    make:middleware          Create a new HTTP middleware class
+    make:model               Create a new Eloquent model class
+    make:notification        Create a new notification class
+    make:notifications-table Create a migration for the notif...
+    make:observer            Create a new observer class
+    make:policy              Create a new policy class
+    make:provider            Create a new service provider class
+    make:queue-failed-table  Create a migration for the faile...
+    make:queue-table         Create a migration for the queue...
+    make:queue-batches-table Create a migration for the batch...
+    make:request             Create a new form request class
+    make:resource            Create a new resource
+    make:rule                Create a new validation rule
+    make:scope               Create a new scope class
+    make:seeder              Create a new seeder class
+    make:session-table       Create a migration for the sessi...
+    make:test                Create a new test class
+    make:trait               Create a new trait
+    make:view                Create a new view
+    make:migration           Create a new migration file. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:\" is ambiguous.
+Did you mean one of these?
+    make:cache-table         Create a migration for the cache...
+    make:cast                Create a new custom Eloquent cas...
+    make:channel             Create a new channel class
+    make:class               Create a new class
+    make:component           Create a new view component class
+    make:command             Create a new Artisan command
+    make:controller          Create a new controller class
+    make:enum                Create a new enum
+    make:event               Create a new event class
+    make:exception           Create a new custom exception class
+    make:factory             Create a new model factory
+    make:interface           Create a new interface
+    make:job                 Create a new job class
+    make:job-middleware      Create a new job middleware class
+    make:listener            Create a new event listener class
+    make:mail                Create a new email class
+    make:middleware          Create a new HTTP middleware class
+    make:model               Create a new Eloquent model class
+    make:notification        Create a new notification class
+    make:notifications-table Create a migration for the notif...
+    make:observer            Create a new observer class
+    make:policy              Create a new policy class
+    make:provider            Create a new service provider class
+    make:queue-failed-table  Create a migration for the faile...
+    make:queue-table         Create a migration for the queue...
+    make:queue-batches-table Create a migration for the batch...
+    make:request             Create a new form request class
+    make:resource            Create a new resource
+    make:rule                Create a new validation rule
+    make:scope               Create a new scope class
+    make:seeder              Create a new seeder class
+    make:session-table       Create a migration for the sessi...
+    make:test                Create a new test class
+    make:trait               Create a new trait
+    make:view                Create a new view
+    make:migration           Create a new migration file. at C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php:743)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php(258): Symfony\\Component\\Console\\Application->find()
+#1 C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php(167): Symfony\\Component\\Console\\Application->doRun()
+#2 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#3 C:\\larvavel\\gbg\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 {main}
+"} 
+[2025-01-30 18:35:07] local.INFO: Sending notification email to: test2@gmail.com  
+[2025-01-30 18:35:07] local.INFO: Sending notification email to: test@gmail.com  
+[2025-01-30 18:53:38] local.ERROR: There are no commands defined in the "send" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"send\" namespace. at C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php:636)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php(685): Symfony\\Component\\Console\\Application->findNamespace()
+#1 C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php(258): Symfony\\Component\\Console\\Application->find()
+#2 C:\\larvavel\\gbg\\vendor\\symfony\\console\\Application.php(167): Symfony\\Component\\Console\\Application->doRun()
+#3 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 C:\\larvavel\\gbg\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2025-01-30 19:18:46] local.ERROR: Class "App\Http\Controllers\Request" does not exist {"userId":200123456780,"exception":"[object] (ReflectionException(code: -1): Class \"App\\Http\\Controllers\\Request\" does not exist at C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ResolvesRouteDependencies.php:88)
+[stacktrace]
+#0 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ResolvesRouteDependencies.php(88): ReflectionClass->__construct()
+#1 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ResolvesRouteDependencies.php(51): Illuminate\\Routing\\ControllerDispatcher->transformDependency()
+#2 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ResolvesRouteDependencies.php(30): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies()
+#3 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(59): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies()
+#4 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(40): Illuminate\\Routing\\ControllerDispatcher->resolveParameters()
+#5 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(264): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#6 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(210): Illuminate\\Routing\\Route->runController()
+#7 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(808): Illuminate\\Routing\\Route->run()
+#8 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->{closure:Illuminate\\Routing\\Router::runRouteWithinStack():807}()
+#9 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(51): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#10 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#11 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(64): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#12 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#13 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(88): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#14 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle()
+#15 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#16 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle()
+#17 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#18 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest()
+#19 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle()
+#20 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#21 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle()
+#22 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(75): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#23 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle()
+#24 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#25 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#26 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#27 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#28 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#29 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(201): Illuminate\\Routing\\Router->dispatch()
+#30 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->{closure:Illuminate\\Foundation\\Http\\Kernel::dispatchToRouter():198}()
+#31 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():142}()
+#32 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#33 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#34 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#35 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#36 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#37 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#38 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#39 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(110): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#40 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#41 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#42 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#43 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#44 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#45 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():158}:159}()
+#46 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Pipeline\\Pipeline->then()
+#47 C:\\larvavel\\gbg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(145): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#48 C:\\larvavel\\gbg\\public\\index.php(54): Illuminate\\Foundation\\Http\\Kernel->handle()
+#49 C:\\larvavel\\gbg\\server.php(21): require_once('...')
+#50 {main}
+"} 

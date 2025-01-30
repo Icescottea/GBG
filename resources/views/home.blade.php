@@ -3,7 +3,7 @@
 @section('main-content')
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Welcome to GasByGas') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800 text-center">{{ __('Welcome to GasByGas') }}</h1>
 
     <!-- Success Message -->
     @if (session('success'))
@@ -15,54 +15,30 @@
         </div>
     @endif
 
-    @if (session('success'))
-    <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
-
     @if (session('status'))
         <div class="alert alert-success border-left-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
 
-    <div class="row justify-content-center">
-        <!-- Feature 1 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow h-100 py-2">
-                <div class="card-body text-center">
-                    <i class="fas fa-gas-pump fa-3x text-primary mb-3"></i>
-                    <h5 class="text-primary">Gas Requests</h5>
-                    <p>Easily request gas cylinders online with real-time tracking.</p>
-                    <a href="{{ route('home') }}" class="btn btn-primary">Request Now</a>
+    <!-- Company Introduction -->
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary text-center">Your Trusted Partner in Gas Supply</h5>
                 </div>
-            </div>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow h-100 py-2">
                 <div class="card-body text-center">
-                    <i class="fas fa-bell fa-3x text-success mb-3"></i>
-                    <h5 class="text-success">Notifications</h5>
-                    <p>Stay updated with SMS and email notifications for your requests.</p>
-                    <a href="{{ route('home') }}" class="btn btn-success">Learn More</a>
-                </div>
-            </div>
-        </div>
+                    <p>At GasByGas, we believe in delivering safe, reliable, and efficient gas solutions to homes and businesses across Sri Lanka. 
+                        With a commitment to excellence and innovation, we have streamlined the process of gas ordering, ensuring seamless 
+                        transactions and timely deliveries. Our advanced system keeps you updated on stock availability, request approvals, and 
+                        scheduled deliveries, so you can focus on what truly matters.</p>
 
-        <!-- Feature 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow h-100 py-2">
-                <div class="card-body text-center">
-                    <i class="fas fa-truck fa-3x text-info mb-3"></i>
-                    <h5 class="text-info">Delivery Tracking</h5>
-                    <p>Track gas deliveries to your preferred outlets in real-time.</p>
-                    <a href="{{ route('home') }}" class="btn btn-info">Track Now</a>
+                    <p>Whether you are a household in need of a reliable cooking gas supply or a business looking for a consistent bulk gas 
+                        provider, we’ve got you covered. Our customer-first approach guarantees satisfaction, making gas procurement hassle-free and 
+                        efficient.</p>
+
+                    <p>Experience the future of gas distribution with GasByGas, where convenience meets reliability.</p>
                 </div>
             </div>
         </div>
@@ -95,4 +71,5 @@
             </div>
         </div>
     </div>
+
 @endsection

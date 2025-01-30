@@ -4,11 +4,16 @@
     <h1 class="h3 mb-4 text-gray-800">{{ __('Gas Request') }}</h1>
 
     <!-- Error Display -->
-    @if ($errors->has('error'))
-        <div class="alert alert-danger">
-            {{ $errors->first('error') }}
-        </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
+
 
     <!-- Success Message -->
     @if (session('success'))
