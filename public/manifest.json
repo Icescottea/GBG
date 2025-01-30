@@ -1,0 +1,22 @@
+{
+    "name": "GasByGas",
+    "short_name": "GasByGas",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "description": "GasByGas - LP Gas Management System",
+    "icons": [
+      {
+        "src": "/img/icons/favicon.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/img/icons/logo.jpeg",
+        "type": "image/jpeg",
+        "sizes": "512x512"
+      }
+    ]
+  }
+  

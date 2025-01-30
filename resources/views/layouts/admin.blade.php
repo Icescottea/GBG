@@ -21,6 +21,22 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#007bff">
+
+    <!-- Register Service Worker -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("{{ asset('sw.js') }}")
+            .then(function(reg) {
+                console.log("Service Worker Registered!", reg);
+            }).catch(function(err) {
+                console.log("Service Worker Registration Failed", err);
+            });
+        }
+    </script>
 </head>
 <body id="page-top">
 
