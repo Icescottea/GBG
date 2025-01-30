@@ -13,17 +13,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OutletManagerController;
 use App\Http\Controllers\TokenController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('home');
 });
@@ -55,7 +44,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/headoffice', [HeadOfficeController::class, 'index'])->name('headoffice');
     Route::post('/headoffice/deliveries', [HeadOfficeController::class, 'storeDelivery'])->name('dispatch.addDelivery');
 
-
     // Tokens Routes
     Route::get('/tokens', [TokenController::class, 'index'])->name('tokens.index');
     Route::get('/tokens/{id}', [TokenController::class, 'details'])->name('tokens.details');
@@ -73,9 +61,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/outletmanager/extend-token/{id}', [OutletManagerController::class, 'extendToken'])->name('outletmanager.extendToken');
 });
 
-// Admin Role Assignment
+// Admin Role Assignment & Business Verification
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/assign-role', [AdminController::class, 'assignRole'])->name('admin.assignRole');
+    Route::post('/admin/verify-business/{id}', [AdminController::class, 'verifyBusiness'])->name('admin.verifyBusiness'); // ✅ New route added
 });
 
 // Static Pages
@@ -86,4 +75,3 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-

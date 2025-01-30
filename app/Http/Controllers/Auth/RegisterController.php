@@ -6,37 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default, this controller uses a trait to
-    | provide this functionality without requiring additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
@@ -44,9 +25,6 @@ class RegisterController extends Controller
 
     /**
      * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
@@ -57,37 +35,60 @@ class RegisterController extends Controller
             'phone' => ['required', 'string', 'max:15', 'unique:userss'],
             'address' => ['required', 'string', 'max:500'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'in:customer,business'], // Ensure only valid roles
+            'certificate' => ['nullable', 'file', 'mimes:pdf,jpg,png', 'max:2048'],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $request = request();
+
+        Log::info("Received registration data: ", $data);
+
+        // Handle certificate upload for business users
+        $certificatePath = null;
+        if ($request->role === 'business' && $request->hasFile('certificate')) {
+            $certificatePath = $request->file('certificate')->store('certificates', 'public');
+            Log::info("Certificate uploaded: " . $certificatePath);
+        }
+
+        // Create the user
+        $user = User::create([
             'id' => $data['id'],
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'address' => $data['address'],
             'password' => Hash::make($data['password']),
-            'role' => 'customer', // Assign default role
+            'role' => $data['role'],
+            'certificate_path' => $certificatePath,
+            'status' => $data['role'] === 'business' ? 'pending' : 'active', // Business users require admin approval
         ]);
+
+        if (!$user) {
+            Log::error("User creation FAILED for email: " . $data['email']);
+            return redirect()->back()->withErrors(['registration' => 'User registration failed.']);
+        }
+
+        Log::info("User created successfully: " . json_encode($user));
+
+        return $user;
     }
 
     /**
-     * Redirect users after registration with a success message.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
+     * Redirect users after registration.
      */
     protected function registered(Request $request, $user)
     {
+        if ($user->role === 'business') {
+            return redirect()->route('login')->with('success', 'Business account registered. Await admin approval.');
+        }
+
+        Auth::login($user); // Auto-login for regular customers
         return redirect()->route('home')->with('success', 'Registration completed successfully! Welcome, ' . $user->name . '.');
     }
 }

@@ -29,6 +29,14 @@ class GasRequestController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = Auth::user();
+
+        // Check if the user is a business and not verified
+        if ($user->role === 'business' && !$user->is_verified) {
+            return redirect()->back()->with('error', 'Your business is not verified yet. Please wait for admin approval.');
+        }
+        
         $request->validate([
             'outlet_id' => 'required|exists:outlet,id',
             'type' => 'required|in:5kg,12kg',

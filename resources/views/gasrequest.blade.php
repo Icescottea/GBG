@@ -41,10 +41,13 @@
             </select>
         </div>
 
-        <!-- Quantity -->
+        <!-- Quantity Selection (Limit Based on User Role) -->
         <div class="form-group">
-            <label for="quantity">{{ __('Quantity') }}</label>
-            <input type="number" name="quantity" id="quantity" class="form-control" min="1" required>
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" class="form-control"
+                min="1"
+                max="{{ auth()->user()->role === 'business' ? 10 : 2 }}"
+                required>
         </div>
 
         <!-- Submit Button -->
@@ -52,4 +55,22 @@
             <button type="submit" class="btn btn-primary">{{ __('Submit Request') }}</button>
         </div>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let quantityInput = document.getElementById('quantity');
+    
+            // Get max limit dynamically
+            let maxLimit = parseInt("{{ auth()->user()->role === 'business' ? 10 : 2 }}", 10);
+    
+            quantityInput.addEventListener('input', function() {
+                if (this.value > maxLimit) {
+                    this.value = maxLimit; // Reset to max allowed
+                }
+            });
+        });
+    </script>    
+    
 @endsection
+
+

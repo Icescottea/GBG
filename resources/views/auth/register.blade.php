@@ -24,7 +24,16 @@
                                     </div>
                                 @endif
 
-                                <form method="POST" action="{{ route('register') }}" class="user">
+                                <!-- Registration Type Selection -->
+                                <div class="form-group text-center">
+                                    <label><strong>Register as:</strong></label>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" id="registerCustomer">Regular Customer</button>
+                                        <button type="button" class="btn btn-warning" id="registerBusiness">Business</button>
+                                    </div>
+                                </div>
+
+                                <form method="POST" action="{{ route('register') }}" class="user" enctype="multipart/form-data">
                                     @csrf <!-- CSRF Token for security -->
 
                                     <!-- NIC Field -->
@@ -52,6 +61,12 @@
                                         <textarea class="form-control form-control-user" name="address" placeholder="{{ __('Address') }}" required>{{ old('address') }}</textarea>
                                     </div>
 
+                                    <!-- Certificate Upload (Hidden Initially) -->
+                                    <div class="form-group" id="certificateSection" style="display: none;">
+                                        <label for="certificate">Upload Business Certificate</label>
+                                        <input type="file" class="form-control" name="certificate">
+                                    </div>
+
                                     <!-- Password Field -->
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
@@ -61,6 +76,8 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                                     </div>
+
+                                    <input type="hidden" name="role" id="role" value="customer">
 
                                     <!-- Submit Button -->
                                     <div class="form-group">
@@ -77,6 +94,7 @@
                                         {{ __('Already have an account? Login!') }}
                                     </a>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -85,4 +103,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('registerCustomer').addEventListener('click', function() {
+        document.getElementById('certificateSection').style.display = 'none';
+        document.getElementById('role').value = 'customer';
+    });
+    
+    document.getElementById('registerBusiness').addEventListener('click', function() {
+        document.getElementById('certificateSection').style.display = 'block';
+        document.getElementById('role').value = 'business';
+    });
+</script>
+
 @endsection
