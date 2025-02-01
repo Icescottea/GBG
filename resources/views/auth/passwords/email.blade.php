@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-lg-6 d-flex align-items-center justify-content-center">
                             <div class="p-5 text-center">
-                                <h1 class="h4 text-gray-900 mb-4">{{ __('Find Your Admin and Ask For Help') }}</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{ __('Please contact our head office for support. +94 76 937 9248') }}</h1>
 
                                 @if ($errors->any())
                                     <div class="alert alert-danger border-left-danger" role="alert">

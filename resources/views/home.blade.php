@@ -44,6 +44,31 @@
         </div>
     </div>
 
+    <!-- Cylinder Prices Section -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">5kg Cylinder Price</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-success">LKR 3,500</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">12kg Cylinder Price</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-success">LKR 9,000</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row mt-5">
         <!-- About Us Section -->
         <div class="col-lg-6 mb-4">
