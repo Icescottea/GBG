@@ -13,7 +13,7 @@ class Outlet extends Model
     protected $table = 'outlet';
 
     // Fillable attributes for mass assignment
-    protected $fillable = ['name', 'location', 'phone', 'status', 'manager_email', 'stock_5kg', 'stock_12kg'];
+    protected $fillable = ['name', 'location', 'phone', 'status', 'manager_email', 'stock_5kg', 'stock_12kg', 'pending_stock_5kg', 'pending_stock_12kg'];
 
     /**
      * Define relationship with deliveries.
@@ -21,6 +21,18 @@ class Outlet extends Model
     public function deliveries()
     {
         return $this->hasMany(Delivery::class, 'outlet_id', 'id');
+    }
+
+    // Function to check stock levels and update status
+    public function updateStatus()
+    {
+        if ($this->stock_5kg == 0 && $this->stock_12kg == 0 &&
+            $this->pending_stock_5kg == 0 && $this->pending_stock_12kg == 0) {
+            $this->status = 1; // Set as inactive
+        } else {
+            $this->status = 0; // Set as active
+        }
+        $this->save();
     }
 
     /**

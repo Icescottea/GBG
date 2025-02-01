@@ -88,6 +88,7 @@ class OutletManagerController extends Controller
         }
 
         $outlet->save();
+        $outlet->updateStatus();
 
         // Create a new token in the tokens table
         $token = \DB::table('tokens')->insertGetId([
@@ -130,6 +131,7 @@ class OutletManagerController extends Controller
         $outlet->pending_stock_12kg = 0;
 
         $outlet->save();
+        $outlet->updateStatus();
 
         return redirect()->back()->with('success', 'Delivery received and stock updated successfully.');
     }
