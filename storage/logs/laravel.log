@@ -22869,3 +22869,5 @@ Did you mean one of these?
 #49 C:\\larvavel\\gbg\\server.php(21): require_once('...')
 #50 {main}
 "} 
+[2025-02-02 06:58:05] local.INFO: Received registration data:  {"_token":"UplMvYmGmhkZ4IRmLO6HjVw5lW4MDryGlrK8eQef","id":"200416300502","name":"Dk","email":"dumindukum@gmail.com","phone":"0772931544","address":"Ja ela","password":"11111111","password_confirmation":"11111111","role":"customer"} 
+[2025-02-02 06:58:06] local.INFO: User created successfully: {"role":"customer","id":200416300502,"name":"Dk","email":"dumindukum@gmail.com","phone":"0772931544","address":"Ja ela","certificate_path":null,"updated_at":"2025-02-02T06:58:06.000000Z","created_at":"2025-02-02T06:58:06.000000Z"}  
