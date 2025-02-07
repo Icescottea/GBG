@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Outlet;
 use App\Models\Delivery;
+use App\Models\GasRequest;
 use App\Notifications\ScheduledDeliveryNotification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use App\Models\Token;
 use App\Models\User;
+use Carbon\Carbon;
 
 class HeadOfficeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Retrieve outlet statuses and map 0/1 to 'Active'/'Inactive'
         $outletStatuses = Outlet::select('id', 'name', 'status', 'stock_5kg', 'stock_12kg')
@@ -28,10 +31,48 @@ class HeadOfficeController extends Controller
         // Retrieve all deliveries for the dispatch office view
         $deliveries = Delivery::with('outlet:id,name')->orderBy('scheduled_date', 'asc')->get();
 
-        // Retrieve outlets for the dropdown in the delivery form
-        $outlets = Outlet::select('id', 'name')->get();
+        // Fetch all outlets for dropdown
+        $outlets = Outlet::all();
 
-        return view('headoffice', compact('outletStatuses', 'pendingDeliveries', 'deliveries', 'outlets'));
+        // Default outlet selection (first outlet if none selected)
+        $selectedOutletId = $request->query('outlet_id') ?? ($outlets->first()->id ?? null);
+
+        if (!$selectedOutletId) {
+            return view('headoffice', compact('outlets', 'selectedOutletId'))->withErrors(['error' => 'No outlets available.']);
+        }    
+
+        // Fetch Monthly Requests for Selected Outlet
+        $monthlyRequests = \DB::table('gas_requests')
+            ->selectRaw('MONTH(requested_date) as month, COUNT(*) as count')
+            ->where('outlet_id', $selectedOutletId)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get()
+            ->map(function ($data) {
+                $data->month = Carbon::create()->month($data->month)->format('F'); // Convert month number to name
+                return $data;
+            });
+
+        // Fetch Completed Tokens for Selected Outlet
+        $completedTokens = \DB::table('tokens')
+            ->join('gas_requests', 'tokens.id', '=', 'gas_requests.token_id')
+            ->where('tokens.status', 'completed')
+            ->where('gas_requests.outlet_id', $selectedOutletId)
+            ->count();
+
+        // Fetch Sold Cylinders (From Completed Tokens)
+        $soldCylinders = \DB::table('tokens')
+            ->join('gas_requests', 'tokens.id', '=', 'gas_requests.token_id')
+            ->where('tokens.status', 'completed')
+            ->where('gas_requests.outlet_id', $selectedOutletId)
+            ->selectRaw("
+                SUM(CASE WHEN gas_requests.type = '5kg' THEN gas_requests.quantity ELSE 0 END) as total_5kg,
+                SUM(CASE WHEN gas_requests.type = '12kg' THEN gas_requests.quantity ELSE 0 END) as total_12kg
+            ")
+            ->first();
+
+        return view('headoffice', compact('outletStatuses', 'pendingDeliveries', 'deliveries', 'outlets', 'selectedOutletId', 
+        'monthlyRequests','completedTokens', 'soldCylinders'));
     }
 
     public function storeDelivery(Request $request)

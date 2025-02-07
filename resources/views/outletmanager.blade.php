@@ -55,8 +55,8 @@
     </div>
 </div>
 
-<!-- Other Sections: Issued Tokens, Stock Levels, Upcoming Deliveries -->
-@foreach (['Issued Tokens' => $issuedTokens, 'Stock Levels' => [$stock], 'Upcoming Deliveries' => $upcomingDeliveries] as $title => $data)
+<!-- Other Sections: Issued Tokens, Token History, Stock Levels, Upcoming Deliveries -->
+@foreach (['Issued Tokens' => $issuedTokens, 'Token History' => $tokenHistory, 'Stock Levels' => [$stock], 'Upcoming Deliveries' => $upcomingDeliveries] as $title => $data)
     <div class="card mb-4">
         <div class="card-header">{{ $title }}</div>
         <div class="card-body">
@@ -67,8 +67,16 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                @if ($title === 'Issued Tokens')
-                                    <th>Token Code</th><th>Customer</th><th>Type</th><th>Quantity</th><th>Pickup End Date</th><th>Action</th>
+                                @if ($title === 'Issued Tokens' || $title === 'Token History')
+                                    <th>Token Code</th>
+                                    <th>Customer</th>
+                                    <th>Type</th>
+                                    <th>Quantity</th>
+                                    <th>Pickup End Date</th>
+                                    <th>Status</th>
+                                    @if ($title === 'Issued Tokens')
+                                        <th>Action</th>
+                                    @endif
                                 @elseif ($title === 'Stock Levels')
                                     <th>5kg Stock</th><th>5kg Pending Stock</th><th>12kg Stock</th><th>12kg Pending Stock</th>
                                 @elseif ($title === 'Upcoming Deliveries')
@@ -85,16 +93,25 @@
                                         <td>{{ $row->type }}</td>
                                         <td>{{ $row->quantity }}</td>
                                         <td>{{ $row->expires_at }}</td>
+                                        <td>Active</td>
                                         <td>
-                                            @if ($row->issued_from === 'pending_stock')
-                                                <form method="POST" action="{{ route('outletmanager.extendToken', $row->id) }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary btn-sm">Extend</button>
-                                                </form>
-                                            @else
-                                                <button class="btn btn-secondary btn-sm" disabled>No Extensions</button>
-                                            @endif
+                                            <form method="POST" action="{{ route('outletmanager.completeToken', $row->id) }}" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                                            </form>
+
+                                            <form method="POST" action="{{ route('outletmanager.failToken', $row->id) }}" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">Fail</button>
+                                            </form>
                                         </td>
+                                    @elseif ($title === 'Token History')
+                                        <td>{{ $row->token_code }}</td>
+                                        <td>{{ $row->user_name }}</td>
+                                        <td>{{ $row->type }}</td>
+                                        <td>{{ $row->quantity }}</td>
+                                        <td>{{ $row->expires_at }}</td>
+                                        <td class="{{ $row->status === 'completed' ? 'text-success' : 'text-danger' }}">{{ ucfirst($row->status) }}</td>
                                     @elseif ($title === 'Stock Levels')
                                         <td>{{ $row['stock_5kg'] }} cylinders</td>
                                         <td>{{ $row['pending_stock_5kg'] }} cylinders</td>

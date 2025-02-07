@@ -40,7 +40,15 @@ class OutletManagerController extends Controller
         ->select('tokens.*','userss.name as user_name', 'gas_requests.type', 'gas_requests.quantity', 'gas_requests.issued_from')
         ->get();
 
-        return view('outletmanager', compact('outlet', 'gasRequests', 'stock', 'upcomingDeliveries', 'issuedTokens'));
+        $tokenHistory = \DB::table('tokens')
+        ->join('gas_requests', 'tokens.id', '=', 'gas_requests.token_id')
+        ->join('userss', 'gas_requests.user_id', '=', 'userss.id')
+        ->where('gas_requests.outlet_id', $outlet->id)
+        ->whereIn('tokens.status', ['completed', 'failed'])
+        ->select('tokens.*', 'userss.name as user_name', 'gas_requests.type', 'gas_requests.quantity')
+        ->get();
+
+        return view('outletmanager', compact('outlet', 'gasRequests', 'stock', 'upcomingDeliveries', 'issuedTokens', 'tokenHistory'));
     }
 
     public function approveRequest($id)
@@ -164,6 +172,38 @@ class OutletManagerController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Token extended successfully! New expiration date: ' . $newExpiry->toDateString());
+    }
+
+    public function completeToken($id)
+    {
+        $token = \DB::table('tokens')->where('id', $id)->first();
+
+        if (!$token) {
+            return redirect()->back()->with('error', 'Token not found.');
+        }
+
+        \DB::table('tokens')->where('id', $id)->update([
+            'status' => 'completed',
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Token marked as completed.');
+    }
+
+    public function failToken($id)
+    {
+        $token = \DB::table('tokens')->where('id', $id)->first();
+
+        if (!$token) {
+            return redirect()->back()->with('error', 'Token not found.');
+        }
+
+        \DB::table('tokens')->where('id', $id)->update([
+            'status' => 'failed',
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Token marked as failed.');
     }
 
 }

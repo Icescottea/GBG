@@ -63,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/outletmanager/deny/{id}', [OutletManagerController::class, 'denyRequest'])->name('outletmanager.deny'); 
     Route::post('/outletmanager/receive-delivery/{id}', [OutletManagerController::class, 'receiveDelivery'])->name('outletmanager.receiveDelivery');   
     Route::post('/outletmanager/extend-token/{id}', [OutletManagerController::class, 'extendToken'])->name('outletmanager.extendToken')->middleware('auth');
+    Route::post('/outletmanager/complete-token/{id}', [OutletManagerController::class, 'completeToken'])->name('outletmanager.completeToken');
+    Route::post('/outletmanager/fail-token/{id}', [OutletManagerController::class, 'failToken'])->name('outletmanager.failToken');
 });
 
 // Admin Role Assignment & Business Verification
