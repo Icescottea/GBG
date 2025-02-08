@@ -52,17 +52,20 @@ class GasRequestController extends Controller
         }
 
 
-        // Check if the user has any token (regardless of status) or pending request
-        $hasOngoingTransaction = GasRequest::where('user_id', Auth::id())
-        ->where('status', 'pending') // Pending request
-        ->exists() || 
-        \App\Models\Token::where('user_id', Auth::id())
-        ->exists(); // Any token exists
+        // Check if the user has a pending request
+        $hasPendingRequest = GasRequest::where('user_id', Auth::id())
+        ->where('status', 'pending')
+        ->exists();
 
-        if ($hasOngoingTransaction) {
-            return redirect()->back()->withErrors([
-                'error' => 'You already have an ongoing transaction (a pending request or issued token). Please complete it before making a new request.',
-            ]);
+        // Check if the user has an active token (but ignore completed/failed tokens)
+        $hasActiveToken = \App\Models\Token::where('user_id', Auth::id())
+        ->where('status', 'active') // Only block active tokens
+        ->exists();
+
+        if ($hasPendingRequest || $hasActiveToken) {
+        return redirect()->back()->withErrors([
+            'error' => 'You already have an ongoing transaction (a pending request or an active token). Please complete it before making a new request.',
+        ]);
         }
 
         // Save the request to the database

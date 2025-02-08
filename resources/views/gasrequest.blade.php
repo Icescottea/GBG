@@ -14,7 +14,6 @@
     </div>
     @endif
 
-
     <!-- Success Message -->
     @if (session('success'))
         <div class="alert alert-success">
@@ -75,7 +74,5 @@
             });
         });
     </script>    
-    
+
 @endsection
-
-
