@@ -14,9 +14,7 @@ class SendDeliveryReminders extends Command
     protected $description = 'Send reminder emails to token holders one day before delivery';
 
     public function __construct()
-    {
-        parent::__construct();
-    }
+    {        parent::__construct();    }
 
     public function handle()
     {
@@ -37,7 +35,6 @@ class SendDeliveryReminders extends Command
                 \Log::info("Reminder email sent to: " . $user->email);
             }
         }
-
         $this->info('Reminder emails sent successfully.');
     }
 }

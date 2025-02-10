@@ -21,8 +21,6 @@ class AdminController extends Controller
 
         return view('admindashboard', compact('outlets', 'selectedUser'));
     }
-
-
     
     public function assignRole(Request $request)
     {

@@ -23,9 +23,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     */
+    //Get a validator for an incoming registration request.
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -40,9 +38,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     */
+    //Create a new user instance after a valid registration.
     protected function create(array $data)
     {
         $request = request();
@@ -79,9 +75,7 @@ class RegisterController extends Controller
         return $user;
     }
 
-    /**
-     * Redirect users after registration.
-     */
+    //Redirect users after registration.
     protected function registered(Request $request, $user)
     {
         if ($user->role === 'business') {

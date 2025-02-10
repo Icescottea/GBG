@@ -67,8 +67,7 @@ class HeadOfficeController extends Controller
             ->where('gas_requests.outlet_id', $selectedOutletId)
             ->selectRaw("
                 SUM(CASE WHEN gas_requests.type = '5kg' THEN gas_requests.quantity ELSE 0 END) as total_5kg,
-                SUM(CASE WHEN gas_requests.type = '12kg' THEN gas_requests.quantity ELSE 0 END) as total_12kg
-            ")
+                SUM(CASE WHEN gas_requests.type = '12kg' THEN gas_requests.quantity ELSE 0 END) as total_12kg ")
             ->first();
 
         return view('headoffice', compact('outletStatuses', 'pendingDeliveries', 'deliveries', 'outlets', 'selectedOutletId', 

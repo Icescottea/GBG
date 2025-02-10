@@ -9,30 +9,17 @@ class Token extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'token_code',
-        'user_id',
-        'status',
-        'expires_at',
-    ];
+    protected $fillable = ['token_code','user_id','status','expires_at',];
 
     protected $casts = [
         'expires_at' => 'datetime', // Ensure expires_at is treated as a Carbon instance
     ];
 
-    /**
-     * Define the relationship to the GasRequest model.
-     * A token belongs to a single gas request.
-     */
+    //Define the relationship to the GasRequest model. A token belongs to a single gas request.
     public function gasRequest()
-    {
-        return $this->hasOne(GasRequest::class, 'token_id', 'id');
-    }
+    {      return $this->hasOne(GasRequest::class, 'token_id', 'id');    }
 
-    /**
-     * Define the relationship to the Outlet model through GasRequest.
-     * A token is associated with an outlet through its gas request.
-     */
+    //Define the relationship to the Outlet model through GasRequest. A token is associated with an outlet through its gas request.
     public function outlet()
     {
         return $this->hasOneThrough(
@@ -45,12 +32,7 @@ class Token extends Model
         );
     }
 
-    /**
-     * Define the relationship to the User model.
-     * A token is issued to a single user.
-     */
+    // Define the relationship to the User model. A token is issued to a single user.
     public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
+    {      return $this->belongsTo(User::class, 'user_id', 'id');    }
 }

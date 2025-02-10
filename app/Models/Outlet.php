@@ -8,20 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Outlet extends Model
 {
     use HasFactory;
-
     // Explicitly define the table name
     protected $table = 'outlet';
 
     // Fillable attributes for mass assignment
     protected $fillable = ['name', 'location', 'phone', 'status', 'manager_email', 'stock_5kg', 'stock_12kg', 'pending_stock_5kg', 'pending_stock_12kg'];
 
-    /**
-     * Define relationship with deliveries.
-     */
+    //Define relationship with deliveries.
     public function deliveries()
-    {
-        return $this->hasMany(Delivery::class, 'outlet_id', 'id');
-    }
+    {        return $this->hasMany(Delivery::class, 'outlet_id', 'id');    }
 
     // Function to check stock levels and update status
     public function updateStatus()
@@ -31,23 +26,13 @@ class Outlet extends Model
             $this->status = 1; // Set as inactive
         } else {
             $this->status = 0; // Set as active
-        }
-        $this->save();
+        } $this->save();
     }
 
-    /**
-     * Define relationship with gas requests.
-     */
+    //Define relationship with gas requests.
     public function gasRequests()
-    {
-        return $this->hasMany(GasRequest::class, 'outlet_id', 'id');
-    }
-
-    /**
-     * Define relationship with manager (User model).
-     */
+    {        return $this->hasMany(GasRequest::class, 'outlet_id', 'id');    }
+    //Define relationship with manager (User model).
     public function manager()
-    {
-        return $this->belongsTo(User::class, 'manager_email', 'email');
-    }
+    {        return $this->belongsTo(User::class, 'manager_email', 'email');    }
 }

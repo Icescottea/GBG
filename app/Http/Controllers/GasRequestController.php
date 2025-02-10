@@ -64,7 +64,8 @@ class GasRequestController extends Controller
 
         if ($hasPendingRequest || $hasActiveToken) {
         return redirect()->back()->withErrors([
-            'error' => 'You already have an ongoing transaction (a pending request or an active token). Please complete it before making a new request.',
+            'error' => 'You already have an ongoing transaction (a pending request or an active token). 
+            Please complete it before making a new request.',
         ]);
         }
 
@@ -78,8 +79,7 @@ class GasRequestController extends Controller
             'requested_date' => now(),
         ]);
 
-        return redirect()->route('gasrequest')->with('success', 'Your gas request has been submitted and is awaiting approval!');
+        return redirect()->route('gasrequest')->with('success', 
+        'Your gas request has been submitted and is awaiting approval!');
     }
-
-
 }

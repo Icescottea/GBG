@@ -18,7 +18,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -28,7 +27,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
     /**
      * Override the redirectTo method to redirect based on user roles.
      */
@@ -49,9 +47,7 @@ class LoginController extends Controller
         }
     }
 
-    /**
-     * Handle the login attempt.
-     */
+    //Handle the login attempt.
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
