@@ -52,7 +52,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">5kg Cylinder Price</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="text-success">LKR 1,550</h4>
+                    <h4 class="text-success">LKR 1,500</h4>
                 </div>
             </div>
         </div>
