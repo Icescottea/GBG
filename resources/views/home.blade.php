@@ -29,13 +29,13 @@
                     <h5 class="m-0 font-weight-bold text-primary text-center">Your Trusted Partner in Gas Supply</h5>
                 </div>
                 <div class="card-body text-center">
-                    <p>At GasByGas, we believe in delivering safe, reliable, and efficient gas solutions to homes and businesses across Sri Lanka. 
-                        With a commitment to excellence and innovation, we have streamlined the process of gas ordering, ensuring seamless 
-                        transactions and timely deliveries. Our advanced system keeps you updated on stock availability, request approvals, and 
+                    <p>At GasByGas, we believe in delivering safe, reliable, and efficient gas solutions to homes and businesses across Sri Lanka.
+                        With a commitment to excellence and innovation, we have streamlined the process of gas ordering, ensuring seamless
+                        transactions and timely deliveries. Our advanced system keeps you updated on stock availability, request approvals, and
                         scheduled deliveries, so you can focus on what truly matters.</p>
 
-                    <p>Whether you are a household in need of a reliable cooking gas supply or a business looking for a consistent bulk gas 
-                        provider, we’ve got you covered. Our customer-first approach guarantees satisfaction, making gas procurement hassle-free and 
+                    <p>Whether you are a household in need of reliable cooking gas supply or a business looking for a consistent bulk gas
+                        provider, we’ve got you covered. Our customer-first approach guarantees satisfaction, making gas procurement hassle-free and
                         efficient.</p>
 
                     <p>Experience the future of gas distribution with GasByGas, where convenience meets reliability.</p>
@@ -52,7 +52,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">5kg Cylinder Price</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="text-success">LKR 1,550</h4>
+                    <h4 class="text-success">LKR 1,500</h4>
                 </div>
             </div>
         </div>
