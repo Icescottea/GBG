@@ -7,6 +7,7 @@ use App\Models\Outlet;
 use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class OutletManagerController extends Controller
 {
@@ -36,7 +37,7 @@ class OutletManagerController extends Controller
         ->join('gas_requests', 'tokens.id', '=', 'gas_requests.token_id')
         ->join('userss', 'gas_requests.user_id', '=', 'userss.id')
         ->where('gas_requests.outlet_id', $outlet->id)
-        ->where('tokens.status', 'active')
+        ->whereIn('tokens.status', ['active', 'extended'])
         ->select('tokens.*','userss.name as user_name', 'gas_requests.type', 'gas_requests.quantity', 'gas_requests.issued_from')
         ->get();
 
@@ -164,15 +165,20 @@ class OutletManagerController extends Controller
             return redirect()->back()->with('error', 'Token cannot be extended.');
         }
 
-        // Extend the token's expiration date by 2 week
-        $newExpiry = now()->addWeek(2);
+        // Extend token's expiration date by 2 weeks
+        $currentExpiry = Carbon::parse($token->expires_at);
+        $newExpiry = $currentExpiry->addWeeks(2);
 
         \DB::table('tokens')->where('id', $id)->update([
             'expires_at' => $newExpiry,
+            'status' => 'extended', // Set status to "extended"
+            'updated_at' => now(),
         ]);
 
         return redirect()->back()->with('success', 'Token extended successfully! New expiration date: ' . $newExpiry->toDateString());
     }
+
+
 
     public function completeToken($id)
     {

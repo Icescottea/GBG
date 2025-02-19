@@ -32,7 +32,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('home') }}" autocomplete="off">
+                    <form method="POST" action="{{ route('profile.update') }}" autocomplete="on">
                         @csrf
                         @method('PUT')
 
@@ -86,7 +86,7 @@
                     <h6 class="m-0 font-weight-bold text-danger">Delete Account</h6>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('home') }}">
+                    <form method="POST" action="{{ route('profile.delete') }}">
                         @csrf
                         @method('DELETE')
                         <p>Deleting your account is a permanent action and cannot be undone. Proceed with caution.</p>

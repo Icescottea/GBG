@@ -93,7 +93,7 @@
                                         <td>{{ $row->type }}</td>
                                         <td>{{ $row->quantity }}</td>
                                         <td>{{ $row->expires_at }}</td>
-                                        <td>Active</td>
+                                        <td>{{ ucfirst($row->status) }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('outletmanager.completeToken', $row->id) }}" style="display:inline;">
                                                 @csrf
@@ -104,6 +104,17 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">Fail</button>
                                             </form>
+
+                                            @if ($row->issued_from === 'pending_stock' && $row->status === 'active')
+                                                <form method="POST" action="{{ route('outletmanager.extendToken', $row->id) }}" style="display:inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-warning btn-sm">Extend</button>
+                                                </form>
+                                            @elseif ($row->status === 'extended')
+                                                <button class="btn btn-info btn-sm" disabled>Already Extended</button>
+                                            @else
+                                                <button class="btn btn-secondary btn-sm" disabled>Extend</button>
+                                            @endif
                                         </td>
                                     @elseif ($title === 'Token History')
                                         <td>{{ $row->token_code }}</td>

@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
 
     // Gas Request Routes
     Route::get('/gasrequest', [GasRequestController::class, 'index'])->name('gasrequest');

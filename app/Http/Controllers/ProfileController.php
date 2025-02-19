@@ -22,24 +22,25 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'id' => 'required|unique:userss,id',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:userss,email',
+            'email' => 'required|string|email|max:255|unique:userss,email,' . Auth::id(),
             'phone' => 'required|string|max:15',
             'address' => 'required|string',
-            'password' => 'required|string|min:8|confirmed',
+            'current_password' => 'nullable|string',
+            'new_password' => 'nullable|string|min:8|confirmed',
         ]);
-
-
+        
         $user = User::findOrFail(Auth::user()->id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
 
-        if (!is_null($request->input('current_password'))) {
+        if ($request->filled('current_password')) {
             if (Hash::check($request->input('current_password'), $user->password)) {
-                $user->password = $request->input('new_password');
+                $user->password = Hash::make($request->input('new_password'));
             } else {
-                return redirect()->back()->withInput();
+                return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect.']);
             }
         }
 
@@ -47,4 +48,18 @@ class ProfileController extends Controller
 
         return redirect()->route('profile')->withSuccess('Profile updated successfully.');
     }
+
+    public function deleteAccount(Request $request)
+    {
+        $user = Auth::user();
+    
+        // Optionally: Delete related data if needed (like gas requests, tokens, etc.)
+    
+        Auth::logout(); // Log the user out before deleting the account
+    
+        $user->delete();
+    
+        return redirect('/')->with('success', 'Your account has been deleted successfully.');
+    }
+
 }
