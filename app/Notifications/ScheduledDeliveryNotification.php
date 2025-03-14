@@ -41,9 +41,9 @@ class ScheduledDeliveryNotification extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Upcoming Gas Delivery to ' . $this->outlet->name)
             ->greeting('Dear ' . $notifiable->name . ',')
-            ->line('A new gas delivery has been scheduled for your outlet: ' . $this->outlet->name . '.')
+            ->line('A new gas delivery has been scheduled for your outlet. ')
             ->line('Please prepare to exchange your empty cylinders and complete your purchase.')
             ->line('Scheduled Delivery Date: ' . $this->delivery->scheduled_date)
-            ->line('Thank you for using our service!');
+            ->line('Thank you for using our service !');
     }
 }

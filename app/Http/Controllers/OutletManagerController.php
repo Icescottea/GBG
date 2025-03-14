@@ -7,6 +7,9 @@ use App\Models\Outlet;
 use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\FailedGasRequestNotification;
+use App\Notifications\ApprovedGasRequestNotification;
 use Carbon\Carbon;
 
 class OutletManagerController extends Controller
@@ -54,29 +57,25 @@ class OutletManagerController extends Controller
 
     public function approveRequest($id)
     {
+        
         $request = GasRequest::findOrFail($id);
         $outlet = Outlet::findOrFail($request->outlet_id);
 
-        // Ensure the request belongs to the authenticated outlet manager
         if ($request->outlet_id !== Auth::user()->outlet_id) {
             return redirect()->back()->withErrors(['error' => 'Unauthorized action.']);
         }
 
-        // Check if the user already has an active token
         if (\DB::table('tokens')->where('user_id', $request->user_id)->where('status', 'active')->exists()) {
             return redirect()->back()->withErrors(['error' => 'An active token already exists for this user.']);
         }
 
         $issuedFrom = null;
 
-        // Check stock levels and deduct stock accordingly
         if ($request->type === '5kg') {
             if ($outlet->stock_5kg >= $request->quantity) {
-                // Deduct from actual stock
                 $outlet->stock_5kg -= $request->quantity;
                 $issuedFrom = 'stock';
             } elseif ($outlet->pending_stock_5kg >= $request->quantity) {
-                // Deduct from pending stock
                 $outlet->pending_stock_5kg -= $request->quantity;
                 $issuedFrom = 'pending_stock';
             } else {
@@ -84,11 +83,9 @@ class OutletManagerController extends Controller
             }
         } elseif ($request->type === '12kg') {
             if ($outlet->stock_12kg >= $request->quantity) {
-                // Deduct from actual stock
                 $outlet->stock_12kg -= $request->quantity;
                 $issuedFrom = 'stock';
             } elseif ($outlet->pending_stock_12kg >= $request->quantity) {
-                // Deduct from pending stock
                 $outlet->pending_stock_12kg -= $request->quantity;
                 $issuedFrom = 'pending_stock';
             } else {
@@ -99,23 +96,27 @@ class OutletManagerController extends Controller
         $outlet->save();
         $outlet->updateStatus();
 
-        // Create a new token in the tokens table
         $token = \DB::table('tokens')->insertGetId([
-            'token_code' => uniqid('TOKEN-'), // Generate a unique token code
+            'token_code' => uniqid('TOKEN-'),
             'user_id' => $request->user_id,
-            'status' => 'active', // Set status to active
-            'expires_at' => now()->addWeeks(2), // Set expiration date
+            'status' => 'active',
+            'expires_at' => now()->addWeeks(2),
             'created_at' => now(),
         ]);
 
-        // Update the gas request with the generated token ID and issued_from
         $request->token_id = $token;
-        $request->status = 'confirmed'; // Update status to confirmed
-        $request->scheduled_date = now()->addDay(); // Set the delivery schedule
-        $request->issued_from = $issuedFrom; // Update issued_from based on stock type
+        $request->status = 'confirmed';
+        $request->scheduled_date = now()->addDay();
+        $request->issued_from = $issuedFrom;
         $request->save();
 
-        return redirect()->back()->with('success', 'Request approved, and token issued.');
+        // Send approval email
+        $user = $request->user;
+        if ($user) {
+            Notification::send($user, new ApprovedGasRequestNotification($request));
+        }
+
+        return redirect()->back()->with('success', 'Request approved, token issued, and user notified via email.');
     }
 
 
@@ -209,7 +210,16 @@ class OutletManagerController extends Controller
             'updated_at' => now(),
         ]);
 
-        return redirect()->back()->with('success', 'Token marked as failed.');
+        // Find the gas request and user to notify
+        $gasRequest = GasRequest::where('token_id', $id)->first();
+        if ($gasRequest) {
+            $user = $gasRequest->user;
+            if ($user) {
+                Notification::send($user, new FailedGasRequestNotification($gasRequest));
+            }
+        }
+
+        return redirect()->back()->with('success', 'Token marked as failed and user notified via email.');
     }
 
 }

@@ -32,6 +32,8 @@ Route::get('/home', function () {
     return view('home'); // Everyone, including logged-in users, stays on home
 })->name('home');
 
+Route::get('/send-test-email', [TestEmailController::class, 'sendTestEmail']);
+
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
     
@@ -82,3 +84,5 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+

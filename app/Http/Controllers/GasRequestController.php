@@ -64,8 +64,7 @@ class GasRequestController extends Controller
 
         if ($hasPendingRequest || $hasActiveToken) {
         return redirect()->back()->withErrors([
-            'error' => 'You already have an ongoing transaction (a pending request or an active token). 
-            Please complete it before making a new request.',
+            'error' => 'Account unverified, kindly wait for verification to place requests.',
         ]);
         }
 
