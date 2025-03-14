@@ -7,7 +7,7 @@
     <div class="card-header">Active Tokens</div>
     <div class="card-body">
         @if ($tokens->isEmpty())
-            <p>No active tokens available.</p>
+            <p>No active tokens available..</p>
         @else
             <table class="table table-bordered">
                 <thead>

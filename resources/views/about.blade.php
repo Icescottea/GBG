@@ -11,11 +11,11 @@
                 <div class="card-body">
                     <p>
                         Welcome to <strong>GasByGas</strong>, Sri Lanka's trusted LP gas distribution service. Our mission is to make gas distribution seamless, reliable, and accessible for all.
-                        We provide customers with an easy-to-use platform for online gas requests, real-time delivery tracking, and instant notifications.
+                        We provide customers with an easy-to-use platform for online gas requests, real-time delivery tracking, and instant notifications..
                     </p>
                     <p>
                         Established with the vision of revolutionizing the gas distribution industry, we ensure the highest standards of safety, efficiency, and customer satisfaction. Our extensive network of
-                        outlets and advanced technology solutions guarantee a smooth experience, whether you're a residential customer or a business organization.
+                        outlets and advanced technology solutions guarantee a smooth experience, whether you're a residential customer or a business organization...
                     </p>
                     <p>
                         <strong>Why Choose Us?</strong>
