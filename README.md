@@ -135,9 +135,4 @@ Performance and stock metrics are visualized for head office staff using **Chart
 
 ## 📝 License
 
-This project is proprietary and developed for GasByGas, Sri Lanka.
-
-## 👨‍💻‍ Development Team
-
-*   [Your Name/Team Name]
-*   [Contact Information]
+This project is open source and licensed under the MIT License.
